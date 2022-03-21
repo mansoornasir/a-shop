@@ -39,12 +39,10 @@ const DeleteCategories = require("./categories/Delete");
 const Admin = require("./admin/index");
 const MISSING_ORDERS = require("./MissingOrders/index");
 
-var fs = require("fs");
-
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "./build")));
+// app.use(express.static(path.join(__dirname, "./build")));
 
 app.get("/images/:cattegory/:image", (req, res) => {
   var { cattegory, image } = req.params;
@@ -56,8 +54,8 @@ app.get("/images/:cattegory/:image", (req, res) => {
 //   fs.unlink('./images/products/'+ );
 // })
 
-app.use("/", Dashboard);
 app.use("/admin", Admin);
+app.use("/", Dashboard);
 
 app.use("/product_images", getProductImages);
 app.use("/products", Select);
